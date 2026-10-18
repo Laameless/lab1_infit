@@ -26,7 +26,7 @@ def tokenize(s):
             tokens.append(ch)
             i += 1
         else:
-            raise ValueError("некорректный символ " + ch)
+            raise ValueError()
 
     result = []
     for ind, token in enumerate(tokens):
@@ -92,6 +92,11 @@ def evaluate(tokens):
 
     return values[0]
 
-s = input()
-tokens = tokenize(s)
-print("результат: ", evaluate(tokens))
+try:
+    s = input()
+    tokens = tokenize(s)
+    print("результат: ", evaluate(tokens))
+except ZeroDivisionError:
+    print("Ошибка: деление на ноль!")
+except Exception:
+    print("Ошибка: некорректное выражение")
